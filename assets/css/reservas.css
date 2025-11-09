@@ -1,0 +1,183 @@
+@import url('style.css');
+
+/* Contenedor principal */
+.container {
+  max-width: 800px;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  font-family: "Elms Sans", sans-serif;
+  text-align: center;
+}
+
+/* Título */
+h2, h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #b71c1c; /* rojo principal */
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+/* Formulario de reservas */
+.form-reserva {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+
+input,
+select,
+textarea {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #d94f5c;
+  box-shadow: 0 0 5px rgba(217,79,92,0.3);
+  outline: none;
+}
+
+/* Botón de envío */
+button,
+.btn-primary {
+  grid-column: 1 / 3;
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover,
+.btn-primary:hover {
+  background-color: #b71c1c ;
+  transform: translateY(-1px);
+}
+
+/* Mensaje de estado */
+#msg {
+  grid-column: 1 / 3;
+  margin-top: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: #b71c1c;
+}
+
+/* Lista de platos / menú */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.menu-item .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Total de la reserva */
+.total-line {
+  font-weight: 700;
+  margin-top: 1rem;
+  text-align: right;
+  color: #222;
+}
+
+/* Tabla de reservas (si se requiere mostrar) */
+.table-section {
+  margin-top: 2rem;
+  overflow-x: auto;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Elms Sans", sans-serif;
+}
+
+th, td {
+  border: 1px solid #eee;
+  padding: 0.7rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-reserva {
+    grid-template-columns: 1fr;
+  }
+  button,
+  .btn-primary {
+    grid-column: auto;
+  }
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .total-line {
+    text-align: left;
+  }
+  th, td {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}

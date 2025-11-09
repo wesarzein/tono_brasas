@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GastroSmart ERP | Don Belisario</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/carta.css">
+
+    <style>
+        /* Oculta el nav mientras se evalúa la sesión */
+        .nav {
+            visibility: hidden;
+        }
+
+        /* Cuando JS termina, se hace visible */
+        .nav.ready {
+            visibility: visible;
+        }
+    </style>
+
+    <script>
+        // Determina visibilidad básica ANTES del render
+        (function () {
+            const user = JSON.parse(localStorage.getItem("user"));
+            const isAdmin = !!(user && user.role === "admin");
+
+            const ADMIN_IDS = ["pedidos", "facturacion", "inventario", "marketing", "reportes"];
+            const PUBLIC_IDS = ["inicio", "carta", "reservas", "contacto"];
+
+            document.addEventListener("DOMContentLoaded", () => {
+                ADMIN_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "" : "none";
+                });
+                PUBLIC_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "none" : "";
+                });
+
+                const acceder = document.getElementById("acceder")?.closest("li");
+                const salir = document.getElementById("salir")?.closest("li");
+                if (acceder) acceder.style.display = isAdmin ? "none" : "";
+                if (salir) salir.style.display = isAdmin ? "" : "none";
+
+                // Mostrar el menú recién ahora
+                document.querySelector(".nav")?.classList.add("ready");
+            });
+        })();
+    </script>
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="assets/img/logo.png" alt="Don Belisario Logo">
+            <h3>Tradición peruana</h3>
+        </div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="index.html" id="inicio">Inicio</a></li>
+                <li><a href="carta.html" id="carta">Carta</a></li>
+                <li><a href="reservas.html" id="reservas">Reservas</a></li>
+                <li><a href="contacto.html" id="contacto">Contáctanos</a></li>
+                <li><a href="pedidos.html" id="pedidos">Pedidos</a></li>
+                <li><a href="facturacion.html" id="facturacion">Facturación</a></li>
+                <li><a href="inventario.html" id="inventario">Inventario</a></li>
+                <li><a href="marketing.html" id="marketing">Promociones</a></li>
+                <li><a href="reportes.html" id="reportes">Reportes</a></li>
+                <!-- Acceso y cierre de sesión -->
+                <li><a href="login.html" id="acceder">Acceder</a></li>
+                <li id="li-salir" style="display:none;"><a href="#" id="salir">Salir</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Promociones -->
+        <div class="carousel-wrapper">
+            <h2 class="section-title">Promociones</h2>
+            <div class="carousel-nav">
+                <button class="prev">&#8249;</button>
+                <button class="next">&#8250;</button>
+            </div>
+            <div class="carousel">
+                <div class="promo-card">
+                    <img src="assets/img/promo2.png" alt="Promo Familiar">
+                    <div class="promo-info">
+                        <h3>Promo Web 1</h3>
+                        <p>1 Pollo Brasa Don Beli, 1 Papa Crocantita Familiar, 1 Ensalada Fresca Familiar, 1 Gaseosa 1.5L, Salsas</p>
+                        <p class="price"><span class="discount">S/ 75.90</span> <span class="original">S/ 109.90</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/promo4.png" alt="Promo Web">
+                    <div class="promo-info">
+                        <h3>Banquete Pollero</h3>
+                        <p>1 pollo a la brasa + 2 papas fritas + 1 arroz chaufa + 1 camote + bot. gaseosa + salsas. </p>
+                        <p class="price"><span class="discount">S/ 89.90</span> <span class="original">S/ 102.90</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/promo5.png" alt="Promo Familiar">
+                    <div class="promo-info">
+                        <h3>Combo 1/2 Clásico</h3>
+                        <p>1/2 pollo a la brasa + papas fritas + 2 bot. gaseosa + salsas</p>
+                        <p class="price"><span class="discount">S/ 40.90</span> <span class="original">S/ 62.90</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/promo6.png" alt="Mega Pollero">
+                    <div class="promo-info">
+                        <h3>Combo Pollero</h3>
+                        <p>1 pollo a la brasa + papas fritas + bot. gaseosa + salsas</p>
+                        <p class="price"><span class="discount">S/ 73.90</span> <span class="original">S/ 89.90</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/promo8.png" alt="Mega Pollero">
+                    <div class="promo-info">
+                        <h3>Mega Pollero</h3>
+                        <p>1 pollo a la brasa + 1/4 pollo (solo) + papas fritas + ensalada + bot. gaseosa + tequeños x4 + salsas</p>
+                        <p class="price"><span class="discount">S/ 102.90</span> <span class="original">S/ 134.90</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carta -->
+        <div class="carousel-wrapper">
+            <h2 class="section-title">Carta</h2>
+            <div class="carousel-nav">
+                <button class="prev">&#8249;</button>
+                <button class="next">&#8250;</button>
+            </div>
+            <div class="carousel">
+                <div class="promo-card">
+                    <img src="assets/img/carta1.jpg" alt="Combo Familiar">
+                    <div class="promo-info">
+                        <h3>1 Pollo con guarnición y ensalada</h3>
+                        <p>1 pollo a la brasa, guarnición familiar a elección, ensalada fresca familiar y salsas</p>
+                        <p class="price"><span class="discount">S/ 87.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta2.png" alt="Combo Pareja">
+                    <div class="promo-info">
+                        <h3>1/2 Pollo con guarnición y ensalada</h3>
+                        <p>1/2 de pollo a la brasa, guarnición mediana a elección, ensalada fresca mediana y salsas</p>
+                        <p class="price"><span class="discount">S/ 48.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta3.png" alt="Combo Familiar">
+                    <div class="promo-info">
+                        <h3>1/4 Pollo con guarnición y ensalada</h3>
+                        <p>1/4 de pollo a la brasa, guarnición personal a elección, ensalada fresca personal y salsas</p>
+                        <p class="price"><span class="discount">S/ 29.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta4.png" alt="Combo Pareja">
+                    <div class="promo-info">
+                        <h3>Mostrito Personal</h3>
+                        <p>1/4 Pollo a la brasa, papa menú, arroz Chaufa menú, salsas</p>
+                        <p class="price"><span class="discount">S/ 23.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta5.png" alt="Combo Familiar">
+                    <div class="promo-info">
+                        <h3>Pierna Parrillera</h3>
+                        <p>1 filete de pierna marinada con salsa chimichurri, guarnición personal, ensalada fresca y salsas</p>
+                        <p class="price"><span class="discount">S/ 32.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-wrapper">
+            <div class="carousel-nav">
+                <button class="prev">&#8249;</button>
+                <button class="next">&#8250;</button>
+            </div>
+            <div class="carousel">
+                <div class="promo-card">
+                    <img src="assets/img/carta6.jpeg" alt="Combo Pareja">
+                    <div class="promo-info">
+                        <h3>Pechuga Parrillera</h3>
+                        <p>1 filete de pechuga marinada con salsa chimichurri, guarnición personal, ensalada frescay salsas</p>
+                        <p class="price"><span class="discount">S/ 33.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta7.png" alt="Combo Familiar">
+                    <div class="promo-info">
+                        <h3>Combo Pollero</h3>
+                        <p>1 pollo a la brasa + papas fritas + salsas</p>
+                        <p class="price"><span class="discount">S/ 61.00</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta8.png" alt="Combo Pareja">
+                    <div class="promo-info">
+                        <h3>Personal</h3>
+                        <p>1/4 Pollo Brasa Don Beli, Papas fritas Menú y Salsas</p>
+                        <p class="price"><span class="discount">S/ 17.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta9.png" alt="Combo Familiar">
+                    <div class="promo-info">
+                        <h3>Mega Combo</h3>
+                        <p>1 pollo a la brasa + papas fritas + ensalada + tequeños x4 + salsas.</p>
+                        <p class="price"><span class="discount">S/ 119.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/carta10.png" alt="Combo Pareja">
+                    <div class="promo-info">
+                        <h3>1 Pollo con guarnición y ensalada</h3>
+                        <p>1 pollo a la brasa, guarnición familiar a elección, ensalada fresca familiar y salsas</p>
+                        <p class="price"><span class="discount">S/ 87.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acompañamientos -->
+        <div class="carousel-wrapper">
+            <h2 class="section-title">Acompañamientos</h2>
+            <div class="carousel-nav">
+                <button class="prev">&#8249;</button>
+                <button class="next">&#8250;</button>
+            </div>
+            <div class="carousel">
+                <div class="promo-card">
+                    <img src="assets/img/acom1.png" alt="Pollo al Horno">
+                    <div class="promo-info">
+                        <h3>Papas Crocantitas</h3>
+                        <p>Nuestra especialidad ¡Perfectas y saladitas!</p>
+                        <p class="price"><span class="discount">S/ 11.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/acom2.png" alt="Pollo Broaster">
+                    <div class="promo-info">
+                        <h3>Arroz Chaufa Personal</h3>
+                        <p>Arroz Chaufa al estilo Don Belisario</p>
+                        <p class="price"><span class="discount">S/ 11.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/acom3.png" alt="Pollo al Horno">
+                    <div class="promo-info">
+                        <h3>Arrocito de la Cacerola Personal</h3>
+                        <p>Delicioso arroz graneadito, aderezado con mantequilla al ajo y tierno choclito desgranado</p>
+                        <p class="price"><span class="discount">S/ 11.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/acom4.png" alt="Pollo Broaster">
+                    <div class="promo-info">
+                        <h3>Papas del Caporal Personal</h3>
+                        <p>Papas Tumbay en gajos con queso gratinado y un toque de chimichurri de la casa</p>
+                        <p class="price"><span class="discount">S/ 14.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/acom5.png" alt="Pollo al Horno">
+                    <div class="promo-info">
+                        <h3>Camotitos de la Abuelita Personal</h3>
+                        <p>Crocantes tiras de camote frito con un secretito de antaño</p>
+                        <p class="price"><span class="discount">S/ 14.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/acom6.png" alt="Pollo Broaster">
+                    <div class="promo-info">
+                        <h3>Ensalada Fresca</h3>
+                        <p>Lechuga y tomate acompañados con zanahoria rallada y aderezados con nuestra vinagreta de la casa</p>
+                        <p class="price"><span class="discount">S/ 19.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/acom7.png" alt="Pollo Broaster">
+                    <div class="promo-info">
+                        <h3>Ensalada Cocida</h3>
+                        <p>Vegetales cocidos acompañados de palta y nuestra vinagreta de la casa</p>
+                        <p class="price"><span class="discount">S/ 19.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Piqueos -->
+        <div class="carousel-wrapper">
+            <h2 class="section-title">Piqueos</h2>
+            <div class="carousel-nav">
+                <button class="prev">&#8249;</button>
+                <button class="next">&#8250;</button>
+            </div>
+            <div class="carousel">
+                <div class="promo-card">
+                    <img src="assets/img/piqueo1.png" alt="Alitas Picantes">
+                    <div class="promo-info">
+                        <h3>Anticuchos Doble</h3>
+                        <p>2 palitos de anticucho, 2 rodajas de choclo, papas crocantitas personal y salsas</p>
+                        <p class="price"><span class="discount">S/ 27.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/piqueo2.png" alt="Choclo con Queso">
+                    <div class="promo-info">
+                        <h3>Alitas x5 Don Beli</h3>
+                        <p>Alitas x5 BBQ o de la casa</p>
+                        <p class="price"><span class="discount">S/ 19.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/piqueo3.png" alt="Alitas Picantes">
+                    <div class="promo-info">
+                        <h3>Tequeños Brasa x8</h3>
+                        <p>8 tequeños brasa</p>
+                        <p class="price"><span class="discount">S/ 19.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/piqueo4.png" alt="Choclo con Queso">
+                    <div class="promo-info">
+                        <h3>Tequeños Brasa x4</h3>
+                        <p>4 tequeños brasa</p>
+                        <p class="price"><span class="discount">S/ 11.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bebidas -->
+        <div class="carousel-wrapper">
+            <h2 class="section-title">Bebidas</h2>
+            <div class="carousel-nav">
+                <button class="prev">&#8249;</button>
+                <button class="next">&#8250;</button>
+            </div>
+            <div class="carousel">
+                <div class="promo-card">
+                    <img src="assets/img/bebida1.png" alt="Inca Kola">
+                    <div class="promo-info">
+                        <h3>Coca Cola Sabor Original 500mL</h3>
+                        <p>Coca Cola Sabor Original 500mL</p>
+                        <p class="price"><span class="discount">S/ 5.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/bebida2.png" alt="Chicha Morada">
+                    <div class="promo-info">
+                        <h3>Coca Cola 1.5L</h3>
+                        <p>Coca Cola 1.5L</p>
+                        <p class="price"><span class="discount">S/ 12.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/bebida3.png" alt="Inca Kola">
+                    <div class="promo-info">
+                        <h3>Coca Cola Sin Azúcar 500mL</h3>
+                        <p>Coca Cola Sin Azúcar 500mL</p>
+                        <p class="price"><span class="discount">S/ 5.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/bebida4.png" alt="Chicha Morada">
+                    <div class="promo-info">
+                        <h3>Coca Cola Zero 1.5L</h3>
+                        <p>Coca Cola Zero 1.5L</p>
+                        <p class="price"><span class="discount">S/ 12.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/bebida5.png" alt="Inca Kola">
+                    <div class="promo-info">
+                        <h3>Inca Kola Sabor Original 500mL</h3>
+                        <p>Inca Kola Sabor Original 500mL</p>
+                        <p class="price"><span class="discount">S/ 5.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/bebida6.png" alt="Chicha Morada">
+                    <div class="promo-info">
+                        <h3>Inca Kola 1.5L</h3>
+                        <p>Inca Kola 1.5L</p>
+                        <p class="price"><span class="discount">S/ 5.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/bebida7.png" alt="Inca Kola">
+                    <div class="promo-info">
+                        <h3>Inca Kola Sin Azúcar 500mL</h3>
+                        <p>Inca Kola Sin Azúcar 500mL</p>
+                        <p class="price"><span class="discount">S/ 5.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="assets/img/bebida8.png" alt="Chicha Morada">
+                    <div class="promo-info">
+                        <h3>Inca Kola Zero 1.5L</h3>
+                        <p>Inca Kola Zero 1.5L</p>
+                        <p class="price"><span class="discount">S/ 12.90</span> <span class="original"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                <img src="assets/img/logo.png" alt="Don Belisario Logo">
+                <br>
+                <p>Sabores únicos. Tradición peruana.</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><img src="assets/img/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/img/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/img/gorjeo.png" alt="Twitter"></a>
+                    <a href="#"><img src="assets/img/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#">Carta</a></li>
+                    <li><a href="#">Promociones</a></li>
+                    <li><a href="#">Reservas</a></li>
+                    <li><a href="#">Pedidos Online</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-payments">
+                <h4>Libro de Reclamaciones</h4>
+                <div class="reclamos">
+                    <a href="#">
+                        <img src="assets/img/reclamos.jpg" alt="Libro de Reclamaciones">
+                    </a>
+                </div>
+                <br>
+                <h4>Métodos de Pago</h4>
+                <div class="payment-icons">
+                    <img src="assets/img/visa.jpg" alt="Visa">
+                    <img src="assets/img/master.jpg" alt="MasterCard">
+                    <img src="assets/img/amex.jpg" alt="Amex">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>wz © 2025 Don Belisario | GastroSmart ERP</p>
+        </div>
+
+    </footer>
+
+    <script src="assets/js/login.js" defer></script>
+    <script src="assets/js/carta.js" defer></script>
+
+</body>
+
+</html>

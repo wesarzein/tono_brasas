@@ -1,0 +1,93 @@
+@import url('style.css');
+
+/* LOGIN */
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  background: #f9f9f9; /* mismo gris suave que otras páginas */
+  font-family: "Elms Sans", sans-serif;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-box {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-logo {
+  width: 90px;
+  margin-bottom: 15px;
+}
+
+.login-box h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #b71c1c; /* color principal */
+}
+
+/* Inputs */
+#loginForm input {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#loginForm input:focus {
+  border-color: #d94f5c;
+  box-shadow: 0 0 5px rgba(217,79,92,0.3);
+  outline: none;
+}
+
+/* Botón */
+#loginForm button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #d32f2f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#loginForm button:hover {
+  background-color:#b71c1c  ;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 2rem 1.5rem;
+  }
+  .login-box h1 {
+    font-size: 1.4rem;
+  }
+  #loginForm input {
+    font-size: 0.9rem;
+  }
+  #loginForm button {
+    font-size: 0.95rem;
+  }
+}

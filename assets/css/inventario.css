@@ -1,0 +1,127 @@
+@import url('style.css');
+
+/* Contenedor principal */
+.container {
+  max-width: 800px;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #d94f5c; /* rojo acento */
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+/* Sección de formulario */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+/* Formulario con grid */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: #222;
+}
+
+input {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: "Elms Sans", sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #d94f5c;
+  box-shadow: 0 0 5px rgba(217,79,92,0.3);
+  outline: none;
+}
+
+/* Botón */
+button {
+  grid-column: 1 / 3;
+  background: #d94f5c; /* rojo acento */
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #b71c1c;
+  transform: translateY(-1px);
+}
+
+/* Sección de tabla */
+.table-section {
+  margin-top: 2rem;
+  overflow-x: auto;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Elms Sans", sans-serif;
+}
+
+th, td {
+  border: 1px solid #eee;
+  padding: 0.7rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+tr.alerta {
+  background-color: #ffd6d6; /* alerta stock bajo */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    grid-column: auto;
+  }
+
+  th, td {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}

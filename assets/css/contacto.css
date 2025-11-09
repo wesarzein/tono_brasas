@@ -1,0 +1,191 @@
+@import url('style.css');
+
+/* Contenedor principal */
+main {
+  max-width: 1200px;
+  margin: 100px auto 100px;
+  padding: 0 1rem;
+  font-family: "Elms Sans", sans-serif;
+}
+
+/* Contenedor de contacto y mapa */
+.contact-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Formulario y mapa */
+.contact-form,
+.contact-map {
+  flex: 1 1 400px;
+  background: #fff;
+  padding: 1.8rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form:hover,
+.contact-map:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* Títulos */
+.contact-form h2,
+.contact-map h2,
+.vision-mision h2 {
+  margin-bottom: 1rem;
+  color: #d94f5c;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+/* Formulario de contacto */
+.contact-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #222;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #d94f5c;
+  box-shadow: 0 0 5px rgba(217,79,92,0.3);
+  outline: none;
+}
+
+.contact-form button {
+  background-color: #d94f5c;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.contact-form button:hover {
+  background-color: #b03b48;
+  transform: translateY(-1px);
+}
+
+/* Mapa */
+.contact-map iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Sección Visión y Misión */
+.vision-mision {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.vision-mision h2 {
+  color: #d94f5c;
+}
+
+.vision-mision p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.vision-mision ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  color: #444;
+}
+
+/* Historia / Conócenos */
+.nosotros {
+  margin-top: 2rem;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.nosotros h2 {
+  color: #d94f5c;
+  text-align: center;
+}
+
+.nosotros p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Tarjetas de equipo (opcional) */
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.equipo-item {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.equipo-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.equipo-item img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.equipo-item h4 {
+  color: #d94f5c;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.equipo-item p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  .vision-mision,
+  .nosotros {
+    margin-top: 1.5rem;
+  }
+}

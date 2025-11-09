@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GastroSmart ERP | Don Belisario</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+
+    <style>
+        /* Oculta el nav mientras se evalúa la sesión */
+        .nav {
+            visibility: hidden;
+        }
+
+        /* Cuando JS termina, se hace visible */
+        .nav.ready {
+            visibility: visible;
+        }
+    </style>
+
+    <script>
+        // Determina visibilidad básica ANTES del render
+        (function () {
+            const user = JSON.parse(localStorage.getItem("user"));
+            const isAdmin = !!(user && user.role === "admin");
+
+            const ADMIN_IDS = ["pedidos", "facturacion", "inventario", "marketing", "reportes"];
+            const PUBLIC_IDS = ["inicio", "carta", "reservas", "contacto"];
+
+            document.addEventListener("DOMContentLoaded", () => {
+                ADMIN_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "" : "none";
+                });
+                PUBLIC_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "none" : "";
+                });
+
+                const acceder = document.getElementById("acceder")?.closest("li");
+                const salir = document.getElementById("salir")?.closest("li");
+                if (acceder) acceder.style.display = isAdmin ? "none" : "";
+                if (salir) salir.style.display = isAdmin ? "" : "none";
+
+                // Mostrar el menú recién ahora
+                document.querySelector(".nav")?.classList.add("ready");
+            });
+        })();
+    </script>
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="assets/img/logo.png" alt="Don Belisario Logo">
+            <h3>Tradición peruana</h3>
+        </div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="index.html" id="inicio">Inicio</a></li>
+                <li><a href="carta.html" id="carta">Carta</a></li>
+                <li><a href="reservas.html" id="reservas">Reservas</a></li>
+                <li><a href="contacto.html" id="contacto">Contáctanos</a></li>
+                <li><a href="pedidos.html" id="pedidos">Pedidos</a></li>
+                <li><a href="facturacion.html" id="facturacion">Facturación</a></li>
+                <li><a href="inventario.html" id="inventario">Inventario</a></li>
+                <li><a href="marketing.html" id="marketing">Promociones</a></li>
+                <li><a href="reportes.html" id="reportes">Reportes</a></li>
+                <!-- Acceso y cierre de sesión -->
+                <li><a href="login.html" id="acceder">Acceder</a></li>
+                <li id="li-salir" style="display:none;"><a href="#" id="salir">Salir</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="carousel">
+            <div class="slides">
+                <div class="slide active">
+                    <img src="assets/img/banner1.jpg" alt="Banner 1">
+                </div>
+                <div class="slide">
+                    <img src="assets/img/banner2.jpg" alt="Banner 2">
+                </div>
+                <div class="slide">
+                    <img src="assets/img/banner3.jpg" alt="Banner 3">
+                </div>
+            </div>
+
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+
+            <div class="indicators">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </main>
+
+    <section class="features">
+        <h1>Sabores que conquistan</h1>
+        <div class="feature-grid">
+            <div class="card">
+                <h4>Pollo a la Brasa Inigualable</h4>
+                <p>Crujiente por fuera, jugoso por dentro. El auténtico sabor peruano en cada bocado.</p>
+            </div>
+            <div class="card">
+                <h4>Promociones y Combos Especiales</h4>
+                <p>Disfruta de nuestros combos familiares y descuentos exclusivos por tiempo limitado.</p>
+            </div>
+            <div class="card">
+                <h4>Ingredientes Frescos y Naturales</h4>
+                <p>Seleccionamos lo mejor para ti: pollos nacionales, verduras frescas y especias auténticas.</p>
+            </div>
+            <div class="card">
+                <h4>Entrega Rápida y Segura</h4>
+                <p>Pide online y recibe tu pedido caliente y a tiempo, directo a tu hogar o trabajo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-promo">
+        <h1>Los pollitos más vendidos</h1>
+        <div class="promo-grid">
+            <div class="promo-card">
+                <img src="assets/img/combo1.jpg" alt="">
+                <div class="promo-info">
+                    <h3>Promo Web</h3>
+                    <p>Delicioso combo con pollo crocante y papas doradas.</p>
+                    <p class="price">
+                        <span class="discount">S/ 48.90</span>
+                        <span class="original">S/ 55.00</span>
+                    </p>
+                </div>
+            </div>
+            <div class="promo-card">
+                <img src="assets/img/combo2.jpg" alt="">
+                <div class="promo-info">
+                    <h3>Promo Familiar</h3>
+                    <p>Combo con pollo asado, ensalada fresca y bebida.</p>
+                    <p class="price">
+                        <span class="discount">S/ 59.90</span>
+                        <span class="original">S/ 75.00</span>
+                    </p>
+                </div>
+            </div>
+            <div class="promo-card">
+                <img src="assets/img/combo4.jpg" alt="">
+                <div class="promo-info">
+                    <h3>Mega Pollero</h3>
+                    <p>Pollo a la brasa con guarnición completa.</p>
+                    <p class="price">
+                        <span class="discount">S/ 102.90</span>
+                        <span class="original">S/ 134.90</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-combo">
+        <div class="combo-grid">
+            <div class="combo-card"><img src="assets/img/index_combo2.jpg" alt="">
+                <p>Disfruta de nuestro delicioso pollito a la brasa con tu bebida preferida.</p>
+                <p>¡La combinación perfecta para un momento único!</p>
+            </div>
+            <div class="combo-card"><img src="assets/img/index_combo1.jpg" alt="">
+                <p>Acompaña tu pollo con el complemento ideal y disfruta de un sabor único en cada bocado.</p>
+                <p>¡Tu combinación perfecta te espera!</p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ambient-bg">
+        <div class="bubbles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                <img src="assets/img/logo.png" alt="Don Belisario Logo">
+                <br>
+                <p>Sabores únicos. Tradición peruana.</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><img src="assets/img/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/img/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/img/gorjeo.png" alt="Twitter"></a>
+                    <a href="#"><img src="assets/img/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#">Carta</a></li>
+                    <li><a href="#">Promociones</a></li>
+                    <li><a href="#">Reservas</a></li>
+                    <li><a href="#">Pedidos Online</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-payments">
+                <h4>Libro de Reclamaciones</h4>
+                <div class="reclamos">
+                    <a href="#">
+                        <img src="assets/img/reclamos.jpg" alt="Libro de Reclamaciones">
+                    </a>
+                </div>
+                <br>
+                <h4>Métodos de Pago</h4>
+                <div class="payment-icons">
+                    <img src="assets/img/visa.jpg" alt="Visa">
+                    <img src="assets/img/master.jpg" alt="MasterCard">
+                    <img src="assets/img/amex.jpg" alt="Amex">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>wz © 2025 Don Belisario | GastroSmart ERP</p>
+        </div>
+
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/login.js" defer></script>
+
+</body>
+
+</html>

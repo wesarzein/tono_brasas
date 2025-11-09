@@ -1,0 +1,77 @@
+@import url('style.css');
+
+/* Secciones de reportes */
+.report-section {
+  background: #fff; /* fondo blanco, consistente con header/footer */
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+/* Títulos de sección */
+.report-section h2 {
+  font-size: 1.5rem;
+  color: #d94f5c; /* mismo rojo acento de la web */
+  margin-bottom: 1rem;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-family: "Elms Sans", sans-serif;
+}
+
+table th,
+table td {
+  border: 1px solid #eee;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  color: #222;
+  text-align: left;
+}
+
+table th {
+  background-color: #f9f9f9; /* tono neutro */
+  font-weight: 600;
+}
+
+table tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+table tr.alerta {
+  background-color: #ffd6d6; /* alerta stock bajo */
+}
+
+/* Gráficos */
+canvas {
+  display: block;
+  width: 100%;
+  max-width: 450px; /* más proporcionado */
+  height: 220px; 
+  margin: 15px auto 0 auto;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  table th, table td {
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+
+  .report-section {
+    padding: 1rem;
+  }
+}

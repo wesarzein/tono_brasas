@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing | GastroSmart ERP</title>
+    <link rel="stylesheet" href="assets/css/marketing.css">
+
+    <style>
+        /* Oculta el nav mientras se evalúa la sesión */
+        .nav {
+            visibility: hidden;
+        }
+
+        /* Cuando JS termina, se hace visible */
+        .nav.ready {
+            visibility: visible;
+        }
+    </style>
+
+    <script>
+        (() => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            const isAdmin = !!(user && user.role === "admin");
+
+            const ADMIN_IDS = ["pedidos", "facturacion", "inventario", "marketing", "reportes"];
+            const PUBLIC_IDS = ["inicio", "carta", "reservas", "contacto"];
+
+            // Espera mínimo retardo posible para asegurar que el DOM existe
+            window.addEventListener("load", () => {
+                ADMIN_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "" : "none";
+                });
+                PUBLIC_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "none" : "";
+                });
+
+                const acceder = document.getElementById("acceder")?.closest("li");
+                const salir = document.getElementById("salir")?.closest("li");
+                if (acceder) acceder.style.display = isAdmin ? "none" : "";
+                if (salir) salir.style.display = isAdmin ? "" : "none";
+
+                document.querySelector(".nav")?.classList.add("ready");
+            });
+        })();
+    </script>
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="assets/img/logo.png" alt="Don Belisario Logo">
+            <h3>Tradición peruana</h3>    
+        </div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="index.html" id="inicio">Inicio</a></li>
+                <li><a href="carta.html" id="carta">Carta</a></li>
+                <li><a href="reservas.html" id="reservas">Reservas</a></li>
+                <li><a href="contacto.html" id="contacto">Contáctanos</a></li>
+                <li><a href="pedidos.html" id="pedidos">Pedidos</a></li>
+                <li><a href="facturacion.html" id="facturacion">Facturación</a></li>
+                <li><a href="inventario.html" id="inventario">Inventario</a></li>
+                <li><a href="marketing.html" id="marketing">Promociones</a></li>
+                <li><a href="reportes.html" id="reportes">Reportes</a></li>
+                <!-- Acceso y cierre de sesión -->
+                <li><a href="login.html" id="acceder">Acceder</a></li>
+                <li id="li-salir" style="display:none;"><a href="#" id="salir">Salir</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="form-section">
+            <h2>Crear promoción</h2>
+            <form id="promoForm">
+                <label>Título:</label>
+                <input type="text" id="titulo" required>
+
+                <label>Descripción:</label>
+                <textarea id="descripcion" required></textarea>
+
+                <label>Descuento (%):</label>
+                <input type="number" id="descuento" min="1" max="100" required>
+
+                <button type="submit">Publicar</button>
+            </form>
+        </section>
+
+        <section class="table-section">
+            <h2>Promociones activas</h2>
+            <div id="listaPromos" class="promo-grid"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                <img src="assets/img/logo.png" alt="Don Belisario Logo">
+                <br>
+                <p>Sabores únicos. Tradición peruana.</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><img src="assets/img/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/img/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/img/gorjeo.png" alt="Twitter"></a>
+                    <a href="#"><img src="assets/img/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#">Carta</a></li>
+                    <li><a href="#">Promociones</a></li>
+                    <li><a href="#">Reservas</a></li>
+                    <li><a href="#">Pedidos Online</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-payments">
+                <h4>Libro de Reclamaciones</h4>
+                <div class="reclamos">
+                    <a href="#">
+                        <img src="assets/img/reclamos.jpg" alt="Libro de Reclamaciones">
+                    </a>
+                </div>
+                <br>
+                <h4>Métodos de Pago</h4>
+                <div class="payment-icons">
+                    <img src="assets/img/visa.jpg" alt="Visa">
+                    <img src="assets/img/master.jpg" alt="MasterCard">
+                    <img src="assets/img/amex.jpg" alt="Amex">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>wz © 2025 Don Belisario | GastroSmart ERP</p>
+        </div>
+
+    </footer>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/marketing.js"></script>
+    <script src="assets/js/login.js" defer></script>
+
+</body>
+
+</html>

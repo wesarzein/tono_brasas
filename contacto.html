@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GastroSmart ERP | Don Belisario</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/contacto.css">
+
+    <style>
+        /* Oculta el nav mientras se evalúa la sesión */
+        .nav {
+            visibility: hidden;
+        }
+
+        /* Cuando JS termina, se hace visible */
+        .nav.ready {
+            visibility: visible;
+        }
+    </style>
+
+    <script>
+        // Determina visibilidad básica ANTES del render
+        (function () {
+            const user = JSON.parse(localStorage.getItem("user"));
+            const isAdmin = !!(user && user.role === "admin");
+
+            const ADMIN_IDS = ["pedidos", "facturacion", "inventario", "marketing", "reportes"];
+            const PUBLIC_IDS = ["inicio", "carta", "reservas", "contacto"];
+
+            document.addEventListener("DOMContentLoaded", () => {
+                ADMIN_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "" : "none";
+                });
+                PUBLIC_IDS.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.parentElement.style.display = isAdmin ? "none" : "";
+                });
+
+                const acceder = document.getElementById("acceder")?.closest("li");
+                const salir = document.getElementById("salir")?.closest("li");
+                if (acceder) acceder.style.display = isAdmin ? "none" : "";
+                if (salir) salir.style.display = isAdmin ? "" : "none";
+
+                // Mostrar el menú recién ahora
+                document.querySelector(".nav")?.classList.add("ready");
+            });
+        })();
+    </script>
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="assets/img/logo.png" alt="Don Belisario Logo">
+            <h3>Tradición peruana</h3>
+        </div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="index.html" id="inicio">Inicio</a></li>
+                <li><a href="carta.html" id="carta">Carta</a></li>
+                <li><a href="reservas.html" id="reservas">Reservas</a></li>
+                <li><a href="contacto.html" id="contacto">Contáctanos</a></li>
+                <li><a href="pedidos.html" id="pedidos">Pedidos</a></li>
+                <li><a href="facturacion.html" id="facturacion">Facturación</a></li>
+                <li><a href="inventario.html" id="inventario">Inventario</a></li>
+                <li><a href="marketing.html" id="marketing">Promociones</a></li>
+                <li><a href="reportes.html" id="reportes">Reportes</a></li>
+                <!-- Acceso y cierre de sesión -->
+                <li><a href="login.html" id="acceder">Acceder</a></li>
+                <li id="li-salir" style="display:none;"><a href="#" id="salir">Salir</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <!-- Formulario -->
+            <div class="contact-form">
+                <h2>Escríbenos</h2>
+                <form id="contactForm">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" required>
+
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" required>
+
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" rows="6" required></textarea>
+
+                    <button type="submit">Enviar mensaje</button>
+                </form>
+            </div>
+
+            <!-- Mapa -->
+            <div class="contact-map">
+                <h2>Ubícanos</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.123456789!2d-79.030789!3d-8.111234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x123456789abcdef!2sDon%20Belisario!5e0!3m2!1ses!2spe!4v1699999999999" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Visión y Misión -->
+        <div class="vision-mision">
+            <h2>Visión y Misión</h2>
+            <p><strong>Visión:</strong></p>
+            <ul>
+                <li>Ser reconocidos como la cadena de pollerías líder en el Perú en gestión tecnológica e innovación
+                    gastronómica.</li>
+            </ul>
+            <p><strong>Misión:</strong></p>
+            <ul>
+                <li>Brindar experiencias gastronómicas de calidad mediante un servicio moderno y tecnológicamente
+                    avanzado.</li>
+            </ul>
+        </div>
+
+        <!-- Conócenos / Historia -->
+        <div class="nosotros">
+            <h2>Conócenos</h2>
+            <p>Don Belisario nació con la idea de fusionar tradición peruana y tecnología en la experiencia
+                gastronómica. Nuestro compromiso es ofrecer un servicio de calidad, innovador y sostenible.</p>
+        </div>
+
+        <!-- Equipo opcional -->
+        <div class="equipo-grid">
+            <div class="equipo-item">
+                <img src="assets/img/chef.jpg" alt="Chef">
+                <h4>Juan Pérez</h4>
+                <p>Chef Ejecutivo</p>
+            </div>
+            <div class="equipo-item">
+                <img src="assets/img/gg.jpg" alt="Gerente">
+                <h4>María López</h4>
+                <p>Gerente General</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                <img src="assets/img/logo.png" alt="Don Belisario Logo">
+                <br>
+                <p>Sabores únicos. Tradición peruana.</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><img src="assets/img/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/img/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/img/gorjeo.png" alt="Twitter"></a>
+                    <a href="#"><img src="assets/img/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#">Carta</a></li>
+                    <li><a href="#">Promociones</a></li>
+                    <li><a href="#">Reservas</a></li>
+                    <li><a href="#">Pedidos Online</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-payments">
+                <h4>Libro de Reclamaciones</h4>
+                <div class="reclamos">
+                    <a href="#">
+                        <img src="assets/img/reclamos.jpg" alt="Libro de Reclamaciones">
+                    </a>
+                </div>
+                <br>
+                <h4>Métodos de Pago</h4>
+                <div class="payment-icons">
+                    <img src="assets/img/visa.jpg" alt="Visa">
+                    <img src="assets/img/master.jpg" alt="MasterCard">
+                    <img src="assets/img/amex.jpg" alt="Amex">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>wz © 2025 Don Belisario | GastroSmart ERP</p>
+        </div>
+
+    </footer>
+
+    <script src="assets/js/login.js" defer></script>
+
+    <script>
+        const form = document.getElementById("contactForm");
+        form?.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("¡Mensaje enviado correctamente!");
+            form.reset();
+        });
+    </script>
+
+</body>
+
+</html>
