@@ -13,7 +13,15 @@
 }
 
 /* Título */
-h2, h3 {
+.container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #b71c1c; /* rojo principal */
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.container h3 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #b71c1c; /* rojo principal */
