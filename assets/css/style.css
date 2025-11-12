@@ -12,7 +12,7 @@ body {
   font-family: "Elms Sans", sans-serif;
   line-height: 1.6;
   color: #222;
-  background: linear-gradient(to top, #614a9e, #a577b8a6);
+  background: linear-gradient(to top, #de6767, #daa5a5);
   padding-top: 85px; 
   overflow-x: hidden;
 }
@@ -46,6 +46,7 @@ body {
   font-size: 1.5rem;
   display: inline-block; /* necesario para la animación */
   animation: pulse 2s infinite alternate ease-in-out;
+  color: #ff3131;
 }
 
 @keyframes pulse {
@@ -234,4 +235,5 @@ body {
   .payment-icons {
     justify-content: center;
   }
+
 }

@@ -15,13 +15,13 @@ h2.section-title {
     text-align: center;
     animation: pulse 2s infinite alternate ease-in-out;
 
-    color: #65d1ca;
+    color: #d94f5c;
     font-size: 2.5rem;
     text-shadow: 
-        0 0 5px #44858181,
-        0 0 10px #44858181,
-        0 0 15px #44858181,
-        0 0 20px #44858181;
+        0 0 5px #c06f6f81,
+        0 0 10px #c06f6f81,
+        0 0 15px #c06f6f81,
+        0 0 20px #c06f6f81;
     letter-spacing: 3px; 
 
 }
