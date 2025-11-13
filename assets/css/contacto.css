@@ -37,7 +37,7 @@ main {
 .contact-map h2,
 .vision-mision h2 {
   margin-bottom: 1rem;
-  color: #d94f5c;
+  color: #000000;
   font-size: 1.6rem;
   text-align: center;
 }
@@ -104,7 +104,7 @@ main {
 }
 
 .vision-mision h2 {
-  color: #d94f5c;
+  color: #000000;
 }
 
 .vision-mision p {
@@ -129,7 +129,7 @@ main {
 }
 
 .nosotros h2 {
-  color: #d94f5c;
+  color: #000000;
   text-align: center;
 }
 
